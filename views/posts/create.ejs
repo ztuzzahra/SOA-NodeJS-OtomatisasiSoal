@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tambah Soal Baru</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+
+<body style="background: #e3f2fd">
+    <div class="container mt-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="http://localhost:3000/posts#">Bank Soal</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="posts/create">Tambah Soal Ujian <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="rangkai">Otomatisasi Soal Ujian</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ujian">Jadwal Ujian</a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                Soal Baru
+              </span>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-12">
+                <% if (messages.error) { %>
+                    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+                    <% } %>
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <h3>Buat Soal Ujian</h3>
+                        <form action="/posts/store" method="post">
+                            <div class="form-group">
+                                <label>Mata Kuliah</label>
+                                <select class="form-select" name="matakuliah" aria-label="Pilih matakuliah">
+                                    <option value="pps" >PPS</option>
+                                    <option value="ITI" >ITI</option>
+                                    <option value="WEB" >WEB</option>
+                                    <option value="MDIK" >MDIK</option>
+                                    <option value="MOSI" >MOSI</option>
+                                </select> 
+                            </div>
+                            <div class="form-group">
+                                <label>Pertanyaan</label>
+                                <textarea class="form-control" name="pertanyaan" rows="4" placeholder="Tulis pertanyaan disini"><%= pertanyaan %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Jawaban A</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanA" value="<%= jawabanA %>" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Jawaban B</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanB" value="<%= jawabanB %>" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Jawaban C</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanC" value="<%= jawabanC %>" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Jawaban D</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanD" value="<%= jawabanD %>" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Tingkat kesulitan Soal</label>
+                                <select class="form-select" name="tingkatkesulitan" aria-label="Pilih tingkat kesulitan soal">
+                                    <option value="Mudah" >Mudah</option>
+                                    <option value="Sulit" >Sulit</option>
+                                </select> 
+                            </div>
+                            <button type="submit" class="btn btn-primary">SIMPAN</button>
+                            <button type="reset" class="btn btn-warning">RESET</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    </script>
+</body>
+</html>

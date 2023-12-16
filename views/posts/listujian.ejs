@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daftar Jadwal Ujian</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body style="background: #e3f2fd">
+
+    <div class="container mt-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="http://localhost:3000/posts#">Bank Soal</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="create">Tambah Soal Ujian <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="rangkai">Otomatisasi Soal Ujian</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="ujian">Jadwal Ujian</a>
+              </li>
+              </ul>
+              <span class="navbar-text">
+                Jadwal Ujian
+              </span>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-12">
+
+                <% if (messages.success) { %>
+                    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+                <% } %>
+                
+                <% if (messages.error) { %>
+                    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+                <% } %>
+
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <h3 class="mb-3">Daftar Soal Ujian</h3>
+                        <a href="buatujian" class="btn btn-dark">Pendaftaran Ujian</i></a>
+                        
+                        
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">NO.</th>
+                                <th scope="col">Ujian</th>
+                                <th scope="col">Tanggal & Waktu Ujian</th>
+                                <th scope="col">Soal Ujian</th>
+                               
+                               
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% if(data.length){
+                                    
+                                    for(var i = 0; i< data.length; i++) {%>  
+                                        <tr>
+                                            <th scope="row" class="text-center"><%= (i+1) %></th>
+                                            <td><%= data[i].judul%></td>
+                                            <td><%= data[i].tanggal%></td>
+                                            <td><%= data[i].berkas%></td>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                        </tr>
+                                    <% }
+                                    
+                                }else{ %>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="alert alert-danger" role="alert">
+                                                Data Tidak Ditemukan !
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% } %>    
+                            </tbody>
+                        </table>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    </script>
+
+</body>
+</html>
